@@ -20786,53 +20786,51 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":55}],175:[function(require,module,exports){
 var React = require('react');
-var ListItem = require('./ListItem.jsx');
 
-var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "potatoes" }];
-
-var List = React.createClass({
-  displayName: 'List',
+var InfoBox = React.creatClass({
 
   render: function () {
-    var listItems = ingredients.map(function (item) {
-      return React.createElement(ListItem, { key: item.id, ingredient: item.text });
-    });
+    // var boxStyle = {
+    //   boxShadow: '0 2px 20px 2px rgba(100,100,100,0.2), inset 0 2px 20px 2px rgba(100,100,100,0.1)',
+    //   borderRadius: '4',
+    //   marginTop: '25',
+    //   background: '#ffffff',
+    // };
+    // if (this.state.background) {
+    //   divStyle.background = this.props.background;
+    // }
 
     return React.createElement(
-      'ul',
-      null,
-      listItems
-    );
-  }
-});
-
-module.exports = List;
-
-},{"./ListItem.jsx":176,"react":174}],176:[function(require,module,exports){
-var React = require('react');
-var ListItem = React.createClass({
-  displayName: 'ListItem',
-
-  render: function () {
-    return React.createElement(
-      'li',
-      null,
+      "div",
+      { style: boxStyle, className: "col-sm-3" },
       React.createElement(
-        'h4',
+        "h3",
         null,
-        this.props.ingredient
+        this.props.value
+      ),
+      React.createElement(
+        "h4",
+        null,
+        this.props.details
       )
     );
   }
 });
 
-module.exports = ListItem;
+module.exports = InfoBox;
 
-},{"react":174}],177:[function(require,module,exports){
+},{"react":174}],176:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var List = require('./components/List.jsx');
+var InfoBox = require('./components/InfoBox.jsx');
 
-ReactDOM.render(React.createElement(List, null), document.getElementById('ingredients'));
+ReactDOM.render(React.createElement(InfoBox, {
+  background: '#ff9900',
+  value: '20',
+  details: 'This is only a test!' }), document.getElementById('box1'));
+ReactDOM.render(React.createElement(InfoBox, {
+  background: 'teal',
+  value: '400',
+  details: 'This too is a test.' }), document.getElementById('box2'));
 
-},{"./components/List.jsx":175,"react":174,"react-dom":29}]},{},[177]);
+},{"./components/InfoBox.jsx":175,"react":174,"react-dom":29}]},{},[176]);
