@@ -3,12 +3,20 @@ var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
 
 ReactDOM.render(<InfoBox
-  background = "#ff9900"
-  value = "20"
-  details = "This is only a test!" />,
-  document.getElementById('box1'));
+
+  heading="TwentyFive"
+  content="This is only a test!" />,
+  document.getElementById('box-one'));
 ReactDOM.render(<InfoBox
-  background = "teal"
-  value = "400"
-  details = "This too is a test." />,
-  document.getElementById('box2'))
+  heading = "400"
+  content = "This too is a test." />,
+  document.getElementById('box2'));
+ReactDOM.render(<InfoBox
+  heading = "Sure"
+  content = "This too is a test." />,
+  document.getElementById('box3'));
+ReactDOM.render(<InfoBox
+  background="#ff9900"
+  heading = "WEll SHit"
+  content = "This too is a test." />,
+  document.getElementById('box4'));

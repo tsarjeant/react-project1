@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsarjeant/react-skeleton.git"
+    "url": "git+https://github.com/tsarjeant/react-project1.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tsarjeant/react-skeleton/issues"
+    "url": "https://github.com/tsarjeant/react-project1/issues"
   },
-  "homepage": "https://github.com/tsarjeant/react-skeleton#readme",
+  "homepage": "https://github.com/tsarjeant/react-project1#readme",
   "dependencies": {
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",

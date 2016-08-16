@@ -20787,31 +20787,42 @@ module.exports = require('./lib/React');
 },{"./lib/React":55}],175:[function(require,module,exports){
 var React = require('react');
 
-var InfoBox = React.creatClass({
+var InfoBox = React.createClass({
+  displayName: 'InfoBox',
 
   render: function () {
-    // var boxStyle = {
-    //   boxShadow: '0 2px 20px 2px rgba(100,100,100,0.2), inset 0 2px 20px 2px rgba(100,100,100,0.1)',
-    //   borderRadius: '4',
-    //   marginTop: '25',
-    //   background: '#ffffff',
-    // };
-    // if (this.state.background) {
-    //   divStyle.background = this.props.background;
-    // }
+    var boxStyle = {
+      boxShadow: '0 2px 20px 2px rgba(100,100,100,0.2), inset 0 2px 20px 2px rgba(100,100,100,0.1)',
+      borderRadius: '4px',
+      marginTop: '25px',
+      marginBottom: '25px',
+      background: '#ffffff'
+    };
+    if (this.props.background) {
+      boxStyle.background = this.props.background;
+    }
 
     return React.createElement(
-      "div",
-      { style: boxStyle, className: "col-sm-3" },
+      'div',
+      { style: boxStyle,
+        className: 'col-sm-12 col-md-3' },
       React.createElement(
-        "h3",
+        'div',
         null,
-        this.props.value
+        React.createElement(
+          'h3',
+          null,
+          this.props.heading
+        )
       ),
       React.createElement(
-        "h4",
+        'div',
         null,
-        this.props.details
+        React.createElement(
+          'p',
+          null,
+          this.props.content
+        )
       )
     );
   }
@@ -20825,12 +20836,18 @@ var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
 
 ReactDOM.render(React.createElement(InfoBox, {
-  background: '#ff9900',
-  value: '20',
-  details: 'This is only a test!' }), document.getElementById('box1'));
+
+  heading: 'TwentyFive',
+  content: 'This is only a test!' }), document.getElementById('box-one'));
 ReactDOM.render(React.createElement(InfoBox, {
-  background: 'teal',
-  value: '400',
-  details: 'This too is a test.' }), document.getElementById('box2'));
+  heading: '400',
+  content: 'This too is a test.' }), document.getElementById('box2'));
+ReactDOM.render(React.createElement(InfoBox, {
+  heading: 'Sure',
+  content: 'This too is a test.' }), document.getElementById('box3'));
+ReactDOM.render(React.createElement(InfoBox, {
+  background: '#ff9900',
+  heading: 'WEll SHit',
+  content: 'This too is a test.' }), document.getElementById('box4'));
 
 },{"./components/InfoBox.jsx":175,"react":174,"react-dom":29}]},{},[176]);
