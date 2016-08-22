@@ -20787,6 +20787,81 @@ module.exports = require('./lib/React');
 },{"./lib/React":55}],175:[function(require,module,exports){
 var React = require('react');
 
+var ContentPanel = React.createClass({
+  displayName: 'ContentPanel',
+
+  componentWillMount: function () {
+    var data = this.props.content.split('|');
+    this.setState({ paneTitle: data[0] });
+    this.setState({ paneContent: data[1] });
+  },
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'col-sm-12 col-md-9' },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          React.createElement(ContentSrc, { content: this.props.valueOne })
+        ),
+        React.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          React.createElement(ContentSrc, { content: this.props.valueTwo })
+        ),
+        React.createElement(
+          'div',
+          { className: 'col-sm-4' },
+          React.createElement(ContentSrc, { content: this.props.valueThree })
+        )
+      )
+    );
+  }
+});
+
+module.exports = ContentPanel;
+
+},{"react":174}],176:[function(require,module,exports){
+var React = require('react');
+
+var ContentSrc = React.createClass({
+  displayName: "ContentSrc",
+
+  render: function () {
+
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "div",
+        { className: "col-sm-12" },
+        React.createElement(
+          "h3",
+          null,
+          this.props.paneTitle
+        )
+      ),
+      React.createElement(
+        "div",
+        { className: "col-sm-12" },
+        React.createElement(
+          "p",
+          null,
+          this.props.paneContent
+        )
+      )
+    );
+  }
+});
+module.exports = ContentSrc;
+
+},{"react":174}],177:[function(require,module,exports){
+var React = require('react');
+
 var InfoBox = React.createClass({
   displayName: 'InfoBox',
 
@@ -20830,15 +20905,17 @@ var InfoBox = React.createClass({
 
 module.exports = InfoBox;
 
-},{"react":174}],176:[function(require,module,exports){
+},{"react":174}],178:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
+var ContentPanel = require('./components/ContentPanel.jsx');
+var ContentSrc = require('./components/ContentSrc.jsx');
 
 ReactDOM.render(React.createElement(InfoBox, {
 
   heading: 'TwentyFive',
-  content: 'This is only a test!' }), document.getElementById('box-one'));
+  content: 'This is only a test!' }), document.getElementById('box1'));
 ReactDOM.render(React.createElement(InfoBox, {
   heading: '400',
   content: 'This too is a test.' }), document.getElementById('box2'));
@@ -20850,4 +20927,9 @@ ReactDOM.render(React.createElement(InfoBox, {
   heading: 'WEll SHit',
   content: 'This too is a test.' }), document.getElementById('box4'));
 
-},{"./components/InfoBox.jsx":175,"react":174,"react-dom":29}]},{},[176]);
+ReactDOM.render(React.createElement(ContentPanel, {
+  valueOne: '12548 | Testing one two three',
+  valueTwo: '145722158 | Keep working',
+  valueThree: '14145 | And the moment of truth' }), document.getElementById('content-one'));
+
+},{"./components/ContentPanel.jsx":175,"./components/ContentSrc.jsx":176,"./components/InfoBox.jsx":177,"react":174,"react-dom":29}]},{},[178]);

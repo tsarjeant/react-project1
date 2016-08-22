@@ -16,7 +16,6 @@ var InfoBox = React.createClass({
     return (
       <div style={boxStyle}
            className="col-sm-12 col-md-3">
-
         <div>
           <h3>{this.props.heading}</h3>
         </div>
