@@ -20786,36 +20786,55 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":55}],175:[function(require,module,exports){
 var React = require('react');
+var ContentSrc = require('./ContentSrc.jsx');
 
 var ContentPanel = React.createClass({
   displayName: 'ContentPanel',
 
-  componentWillMount: function () {
-    var data = this.props.content.split('|');
-    this.setState({ paneTitle: data[0] });
-    this.setState({ paneContent: data[1] });
-  },
 
   render: function () {
+
+    var panelStyle = {
+      borderRadius: '4px',
+      margin: '10px 0',
+      height: '20em',
+      background: '#ff9900'
+    };
+    if (this.props.background) {
+      panelStyle.background = this.props.background;
+    }
+
+    var dataSpace = {
+      color: 'white',
+      background: '#444444',
+      borderRadius: '4px',
+      height: '6em',
+      marginTop: '14em'
+    };
+
+    var contentStyle = {
+      textAlign: 'center'
+    };
+
     return React.createElement(
       'div',
-      { className: 'col-sm-12 col-md-9' },
+      { style: panelStyle, className: 'col-sm-12 col-md-9' },
       React.createElement(
         'div',
-        { className: 'row' },
+        { style: dataSpace, className: 'row' },
         React.createElement(
           'div',
-          { className: 'col-sm-4' },
+          { style: contentStyle, className: 'col-sm-4' },
           React.createElement(ContentSrc, { content: this.props.valueOne })
         ),
         React.createElement(
           'div',
-          { className: 'col-sm-4' },
+          { style: contentStyle, className: 'col-sm-4' },
           React.createElement(ContentSrc, { content: this.props.valueTwo })
         ),
         React.createElement(
           'div',
-          { className: 'col-sm-4' },
+          { style: contentStyle, className: 'col-sm-4' },
           React.createElement(ContentSrc, { content: this.props.valueThree })
         )
       )
@@ -20825,39 +20844,46 @@ var ContentPanel = React.createClass({
 
 module.exports = ContentPanel;
 
-},{"react":174}],176:[function(require,module,exports){
+},{"./ContentSrc.jsx":176,"react":174}],176:[function(require,module,exports){
 var React = require('react');
 
-var ContentSrc = React.createClass({
-  displayName: "ContentSrc",
+var contentSrc = React.createClass({
+  displayName: 'contentSrc',
+
+
+  componentWillMount: function () {
+    var data = this.props.content.split('|');
+    this.setState({ paneTitle: data[0] });
+    this.setState({ paneContent: data[1] });
+  },
 
   render: function () {
 
     return React.createElement(
-      "div",
+      'div',
       null,
       React.createElement(
-        "div",
-        { className: "col-sm-12" },
+        'div',
+        { className: 'col-sm-12' },
         React.createElement(
-          "h3",
+          'h3',
           null,
-          this.props.paneTitle
+          this.state.paneTitle
         )
       ),
       React.createElement(
-        "div",
-        { className: "col-sm-12" },
+        'div',
+        { className: 'col-sm-12' },
         React.createElement(
-          "p",
+          'p',
           null,
-          this.props.paneContent
+          this.state.paneContent
         )
       )
     );
   }
 });
-module.exports = ContentSrc;
+module.exports = contentSrc;
 
 },{"react":174}],177:[function(require,module,exports){
 var React = require('react');
@@ -20867,14 +20893,16 @@ var InfoBox = React.createClass({
 
   render: function () {
     var boxStyle = {
-      boxShadow: '0 2px 20px 2px rgba(100,100,100,0.2), inset 0 2px 20px 2px rgba(100,100,100,0.1)',
       borderRadius: '4px',
-      marginTop: '25px',
-      marginBottom: '25px',
-      background: '#ffffff'
+      padding: '10px',
+      background: '#ffffff',
+      textAlign: 'center'
     };
     if (this.props.background) {
       boxStyle.background = this.props.background;
+    }
+    if (this.props.color) {
+      boxStyle.color = this.props.color;
     }
 
     return React.createElement(
@@ -20910,10 +20938,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
 var ContentPanel = require('./components/ContentPanel.jsx');
-var ContentSrc = require('./components/ContentSrc.jsx');
+// var ContentSrc = require('./components/ContentSrc.jsx');
 
 ReactDOM.render(React.createElement(InfoBox, {
-
   heading: 'TwentyFive',
   content: 'This is only a test!' }), document.getElementById('box1'));
 ReactDOM.render(React.createElement(InfoBox, {
@@ -20923,13 +20950,20 @@ ReactDOM.render(React.createElement(InfoBox, {
   heading: 'Sure',
   content: 'This too is a test.' }), document.getElementById('box3'));
 ReactDOM.render(React.createElement(InfoBox, {
-  background: '#ff9900',
-  heading: 'WEll SHit',
-  content: 'This too is a test.' }), document.getElementById('box4'));
+  background: '#008080',
+  color: 'white',
+  heading: '100°',
+  content: 'in Texas' }), document.getElementById('box4'));
 
 ReactDOM.render(React.createElement(ContentPanel, {
-  valueOne: '12548 | Testing one two three',
-  valueTwo: '145722158 | Keep working',
-  valueThree: '14145 | And the moment of truth' }), document.getElementById('content-one'));
+  valueOne: '12548|section one',
+  valueTwo: '145722158|section two',
+  valueThree: '14145|section three' }), document.getElementById('content-one'));
 
-},{"./components/ContentPanel.jsx":175,"./components/ContentSrc.jsx":176,"./components/InfoBox.jsx":177,"react":174,"react-dom":29}]},{},[178]);
+ReactDOM.render(React.createElement(ContentPanel, {
+  background: 'red',
+  valueOne: '12041986|Random Birthday',
+  valueTwo: '10,854|Days since born',
+  valueThree: '29|Age' }), document.getElementById('content-two'));
+
+},{"./components/ContentPanel.jsx":175,"./components/InfoBox.jsx":177,"react":174,"react-dom":29}]},{},[178]);

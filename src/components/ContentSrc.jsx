@@ -22,4 +22,4 @@ var contentSrc = React.createClass({
     );
   }
 });
-module.exports = ContentSrc;
+module.exports = contentSrc;

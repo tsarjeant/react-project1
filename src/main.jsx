@@ -17,13 +17,21 @@ ReactDOM.render(<InfoBox
   content = "This too is a test." />,
   document.getElementById('box3'));
 ReactDOM.render(<InfoBox
-  background="#ff9900"
-  heading = "WEll SHit"
-  content = "This too is a test." />,
+  background="#008080"
+  color="white"
+  heading = "100°"
+  content = "in Texas" />,
   document.getElementById('box4'));
 
 ReactDOM.render(<ContentPanel
-  valueOne="12548|Testing one two three"
-  valueTwo="145722158|Keep working"
-  valueThree="14145|And the moment of truth" />,
-  document.getElementById('content1'))
+  valueOne="12548|section one"
+  valueTwo="145722158|section two"
+  valueThree="14145|section three" />,
+  document.getElementById('content-one'));
+
+ReactDOM.render(<ContentPanel
+  background="red"
+  valueOne="12041986|Random Birthday"
+  valueTwo="10,854|Days since born"
+  valueThree="29|Age" />,
+  document.getElementById('content-two'));
