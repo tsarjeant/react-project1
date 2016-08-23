@@ -20894,6 +20894,8 @@ var InfoBox = React.createClass({
   render: function () {
     var boxStyle = {
       borderRadius: '4px',
+      border: '1px solid #777777',
+      margin: '5px',
       padding: '10px',
       background: '#ffffff',
       textAlign: 'center'
@@ -20904,27 +20906,33 @@ var InfoBox = React.createClass({
     if (this.props.color) {
       boxStyle.color = this.props.color;
     }
+    if (this.props.border) {
+      boxStyle.border = this.props.border;
+    }
 
     return React.createElement(
       'div',
-      { style: boxStyle,
-        className: 'col-sm-12 col-md-3' },
+      { className: 'col-sm-6 col-md-3' },
       React.createElement(
         'div',
-        null,
+        { style: boxStyle },
         React.createElement(
-          'h3',
+          'div',
           null,
-          this.props.heading
-        )
-      ),
-      React.createElement(
-        'div',
-        null,
+          React.createElement(
+            'h3',
+            null,
+            this.props.heading
+          )
+        ),
         React.createElement(
-          'p',
+          'div',
           null,
-          this.props.content
+          React.createElement(
+            'p',
+            null,
+            this.props.content
+          )
         )
       )
     );
@@ -20935,10 +20943,48 @@ module.exports = InfoBox;
 
 },{"react":174}],178:[function(require,module,exports){
 var React = require('react');
+
+var SideBox = React.createClass({
+  displayName: "SideBox",
+
+  render: function () {
+    return React.createElement(
+      "div",
+      { className: "col-sm-6 col-md-3" },
+      React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "h3",
+            null,
+            this.props.heading
+          )
+        ),
+        React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "p",
+            null,
+            this.props.content
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = SideBox;
+
+},{"react":174}],179:[function(require,module,exports){
+var React = require('react');
 var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
 var ContentPanel = require('./components/ContentPanel.jsx');
-// var ContentSrc = require('./components/ContentSrc.jsx');
+var SideBox = require('./components/SideBox.jsx');
 
 ReactDOM.render(React.createElement(InfoBox, {
   heading: 'TwentyFive',
@@ -20951,6 +20997,7 @@ ReactDOM.render(React.createElement(InfoBox, {
   content: 'This too is a test.' }), document.getElementById('box3'));
 ReactDOM.render(React.createElement(InfoBox, {
   background: '#008080',
+  border: '#008080',
   color: 'white',
   heading: '100°',
   content: 'in Texas' }), document.getElementById('box4'));
@@ -20959,11 +21006,14 @@ ReactDOM.render(React.createElement(ContentPanel, {
   valueOne: '12548|section one',
   valueTwo: '145722158|section two',
   valueThree: '14145|section three' }), document.getElementById('content-one'));
-
 ReactDOM.render(React.createElement(ContentPanel, {
   background: 'red',
   valueOne: '12041986|Random Birthday',
   valueTwo: '10,854|Days since born',
   valueThree: '29|Age' }), document.getElementById('content-two'));
 
-},{"./components/ContentPanel.jsx":175,"./components/InfoBox.jsx":177,"react":174,"react-dom":29}]},{},[178]);
+ReactDOM.render(React.createElement(SideBox, {
+  heading: 'New Box',
+  content: 'Testing' }), document.getElementById('side1'));
+
+},{"./components/ContentPanel.jsx":175,"./components/InfoBox.jsx":177,"./components/SideBox.jsx":178,"react":174,"react-dom":29}]},{},[179]);

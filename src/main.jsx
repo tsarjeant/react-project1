@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var InfoBox = require('./components/InfoBox.jsx');
 var ContentPanel = require('./components/ContentPanel.jsx');
-// var ContentSrc = require('./components/ContentSrc.jsx');
+var SideBox = require('./components/SideBox.jsx');
 
 ReactDOM.render(<InfoBox
   heading="TwentyFive"
@@ -18,6 +18,7 @@ ReactDOM.render(<InfoBox
   document.getElementById('box3'));
 ReactDOM.render(<InfoBox
   background="#008080"
+  border="#008080"
   color="white"
   heading = "100°"
   content = "in Texas" />,
@@ -28,10 +29,14 @@ ReactDOM.render(<ContentPanel
   valueTwo="145722158|section two"
   valueThree="14145|section three" />,
   document.getElementById('content-one'));
-
 ReactDOM.render(<ContentPanel
   background="red"
   valueOne="12041986|Random Birthday"
   valueTwo="10,854|Days since born"
   valueThree="29|Age" />,
   document.getElementById('content-two'));
+
+ReactDOM.render(<SideBox
+  heading = "New Box"
+  content = "Testing" />,
+  document.getElementById('side1'));
