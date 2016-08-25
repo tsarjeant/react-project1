@@ -7,7 +7,8 @@ var ContentPanel = React.createClass({
 
     var panelStyle = {
       borderRadius: '4px',
-      margin: '10px 0',
+      margin: '1em 0',
+      paddingTop: '14em',
       height: '20em',
       background: '#ff9900'
     };
@@ -18,9 +19,10 @@ var ContentPanel = React.createClass({
     var dataSpace = {
       color: 'white',
       background: '#444444',
-      borderRadius: '4px',
+      borderBottomLeftRadius: '4px',
+      borderBottomRightRadius: '4px',
       height:'6em',
-      marginTop: '14em'
+      // paddingTop: '14em'
     };
 
     var contentStyle = {
@@ -29,19 +31,20 @@ var ContentPanel = React.createClass({
 
 
     return (
-      <div style={panelStyle} className="col-sm-12 col-md-9">
-        <div style={dataSpace} className="row">
-          <div style={contentStyle} className="col-sm-4">
-            <ContentSrc content={this.props.valueOne} />
-          </div>
-          <div style={contentStyle} className="col-sm-4">
-            <ContentSrc content={this.props.valueTwo} />
-          </div>
-          <div style={contentStyle} className="col-sm-4">
-            <ContentSrc content={this.props.valueThree} />
+      <div style={panelStyle} >
+        <div style={dataSpace} className="col-sm-12">
+          <div class="row">
+            <div style={contentStyle} className="col-sm-4">
+              <ContentSrc content={this.props.valueOne} />
+            </div>
+            <div style={contentStyle} className="col-sm-4">
+              <ContentSrc content={this.props.valueTwo} />
+            </div>
+            <div style={contentStyle} className="col-sm-4">
+              <ContentSrc content={this.props.valueThree} />
+            </div>
           </div>
         </div>
-
       </div>
     )
   }

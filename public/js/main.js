@@ -20796,7 +20796,8 @@ var ContentPanel = React.createClass({
 
     var panelStyle = {
       borderRadius: '4px',
-      margin: '10px 0',
+      margin: '1em 0',
+      paddingTop: '14em',
       height: '20em',
       background: '#ff9900'
     };
@@ -20807,9 +20808,9 @@ var ContentPanel = React.createClass({
     var dataSpace = {
       color: 'white',
       background: '#444444',
-      borderRadius: '4px',
-      height: '6em',
-      marginTop: '14em'
+      borderBottomLeftRadius: '4px',
+      borderBottomRightRadius: '4px',
+      height: '6em'
     };
 
     var contentStyle = {
@@ -20818,24 +20819,28 @@ var ContentPanel = React.createClass({
 
     return React.createElement(
       'div',
-      { style: panelStyle, className: 'col-sm-12 col-md-9' },
+      { style: panelStyle },
       React.createElement(
         'div',
-        { style: dataSpace, className: 'row' },
+        { style: dataSpace, className: 'col-sm-12' },
         React.createElement(
           'div',
-          { style: contentStyle, className: 'col-sm-4' },
-          React.createElement(ContentSrc, { content: this.props.valueOne })
-        ),
-        React.createElement(
-          'div',
-          { style: contentStyle, className: 'col-sm-4' },
-          React.createElement(ContentSrc, { content: this.props.valueTwo })
-        ),
-        React.createElement(
-          'div',
-          { style: contentStyle, className: 'col-sm-4' },
-          React.createElement(ContentSrc, { content: this.props.valueThree })
+          { 'class': 'row' },
+          React.createElement(
+            'div',
+            { style: contentStyle, className: 'col-sm-4' },
+            React.createElement(ContentSrc, { content: this.props.valueOne })
+          ),
+          React.createElement(
+            'div',
+            { style: contentStyle, className: 'col-sm-4' },
+            React.createElement(ContentSrc, { content: this.props.valueTwo })
+          ),
+          React.createElement(
+            'div',
+            { style: contentStyle, className: 'col-sm-4' },
+            React.createElement(ContentSrc, { content: this.props.valueThree })
+          )
         )
       )
     );
@@ -20945,29 +20950,51 @@ module.exports = InfoBox;
 var React = require('react');
 
 var SideBox = React.createClass({
-  displayName: "SideBox",
+  displayName: 'SideBox',
 
   render: function () {
+
+    var sideStyle = {
+      borderRadius: '4px',
+      margin: '10px 0',
+      height: '12em',
+      background: '#ffffff',
+      border: '1px solid #888888'
+    };
+    var sideText = {
+      borderRadiusTopLeft: '4px',
+      borderRadiusTopRight: '4px',
+      background: 'green',
+      height: '5em',
+      background: '#ffffff',
+      marginTop: '-20px',
+      color: '#ffffff',
+      textAlign: 'center'
+    };
+    if (this.props.background) {
+      sideText.background = this.props.background;
+    }
+
     return React.createElement(
-      "div",
-      { className: "col-sm-6 col-md-3" },
+      'div',
+      { style: sideStyle },
       React.createElement(
-        "div",
-        null,
+        'div',
+        { style: sideText },
         React.createElement(
-          "div",
+          'div',
           null,
           React.createElement(
-            "h3",
+            'h3',
             null,
             this.props.heading
           )
         ),
         React.createElement(
-          "div",
+          'div',
           null,
           React.createElement(
-            "p",
+            'p',
             null,
             this.props.content
           )
@@ -21007,13 +21034,22 @@ ReactDOM.render(React.createElement(ContentPanel, {
   valueTwo: '145722158|section two',
   valueThree: '14145|section three' }), document.getElementById('content-one'));
 ReactDOM.render(React.createElement(ContentPanel, {
-  background: 'red',
+  background: '#CC153E',
   valueOne: '12041986|Random Birthday',
   valueTwo: '10,854|Days since born',
   valueThree: '29|Age' }), document.getElementById('content-two'));
 
 ReactDOM.render(React.createElement(SideBox, {
+  background: '#ff9900',
   heading: 'New Box',
   content: 'Testing' }), document.getElementById('side1'));
+ReactDOM.render(React.createElement(SideBox, {
+  background: '#CCCC00',
+  heading: 'New Box 2',
+  content: 'Testing' }), document.getElementById('side2'));
+ReactDOM.render(React.createElement(SideBox, {
+  background: '#660066',
+  heading: 'New Box 3',
+  content: 'Testing' }), document.getElementById('side3'));
 
 },{"./components/ContentPanel.jsx":175,"./components/InfoBox.jsx":177,"./components/SideBox.jsx":178,"react":174,"react-dom":29}]},{},[179]);

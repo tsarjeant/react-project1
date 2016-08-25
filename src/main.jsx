@@ -30,13 +30,24 @@ ReactDOM.render(<ContentPanel
   valueThree="14145|section three" />,
   document.getElementById('content-one'));
 ReactDOM.render(<ContentPanel
-  background="red"
+  background="#CC153E"
   valueOne="12041986|Random Birthday"
   valueTwo="10,854|Days since born"
   valueThree="29|Age" />,
   document.getElementById('content-two'));
 
 ReactDOM.render(<SideBox
+  background = "#ff9900"
   heading = "New Box"
   content = "Testing" />,
   document.getElementById('side1'));
+ReactDOM.render(<SideBox
+  background = "#CCCC00"
+  heading = "New Box 2"
+  content = "Testing" />,
+  document.getElementById('side2'));
+ReactDOM.render(<SideBox
+  background = "#660066"
+  heading = "New Box 3"
+  content = "Testing" />,
+  document.getElementById('side3'));
