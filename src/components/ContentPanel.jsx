@@ -34,13 +34,13 @@ var ContentPanel = React.createClass({
       <div style={panelStyle} >
         <div style={dataSpace} className="col-sm-12">
           <div class="row">
-            <div style={contentStyle} className="col-sm-4">
+            <div style={contentStyle} className="col-xs-4">
               <ContentSrc content={this.props.valueOne} />
             </div>
-            <div style={contentStyle} className="col-sm-4">
+            <div style={contentStyle} className="col-xs-4">
               <ContentSrc content={this.props.valueTwo} />
             </div>
-            <div style={contentStyle} className="col-sm-4">
+            <div style={contentStyle} className="col-xs-4">
               <ContentSrc content={this.props.valueThree} />
             </div>
           </div>

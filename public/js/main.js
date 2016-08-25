@@ -20828,17 +20828,17 @@ var ContentPanel = React.createClass({
           { 'class': 'row' },
           React.createElement(
             'div',
-            { style: contentStyle, className: 'col-sm-4' },
+            { style: contentStyle, className: 'col-xs-4' },
             React.createElement(ContentSrc, { content: this.props.valueOne })
           ),
           React.createElement(
             'div',
-            { style: contentStyle, className: 'col-sm-4' },
+            { style: contentStyle, className: 'col-xs-4' },
             React.createElement(ContentSrc, { content: this.props.valueTwo })
           ),
           React.createElement(
             'div',
-            { style: contentStyle, className: 'col-sm-4' },
+            { style: contentStyle, className: 'col-xs-4' },
             React.createElement(ContentSrc, { content: this.props.valueThree })
           )
         )
